@@ -13,7 +13,7 @@ function resetPassword($email, $newpassword)
     if (!stristr($usercontent, $email)) {
         echo "User does not exist";
     } else {
-        $input =  $newpassword . "\r\n"; //
+        $input =  $newpassword . "\r\n"; //it is not easy to be a programmer
         $yy = fopen($dir, 'r+');
         fwrite($yy, $input);
         fclose($yy);

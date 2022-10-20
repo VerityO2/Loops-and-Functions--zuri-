@@ -2,7 +2,7 @@
 
 function logout()
 {
-    if (!isset($_SESSION['username']['email'])) {
+    if (!isset($_SESSION['username'])) {
         header('Location: ..\dashboard.php?still?loggedin');
         exit();
     } else {

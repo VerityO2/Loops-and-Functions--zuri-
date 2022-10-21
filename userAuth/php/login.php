@@ -9,16 +9,28 @@ if (isset($_POST['submit'])) {
 function loginUser($username, $password)
 {
     $dir = "..\storage\users.csv";
-    $usercontent = file_get_contents($dir);
-    if (stristr($usercontent, $username)) {
-        if (!stristr($usercontent, $_POST['password'])) {
-            header('Location: ..\forms\login.html?error');
-        } else {
-            session_start();
-            $_SESSION['Username'] = $_POST['email'];
-            header('Location: ..\dashboard.php?success');
-        }
-    } else {
-        header('Location: ..\forms\login.html?error');
+    $fopn = fopen($dir, 'r');
+    $fget = fgets($fopn);
+
+    $usercontent = file($dir);
+
+    foreach ($usercontent as $index => $value) {
+        do {
+            if ($username === $value) {
+                if (!$password  === $value) {
+                    header('Location: ..\forms\login.html?error');
+                    exit();
+                } else {
+                    session_start();
+                    $_SESSION['username'] = $_POST['email'];
+                    header('Location: ..\dashboard.php?success');
+                    exit();
+                }
+            } else {
+                header('Location: ..\forms\login.html?error');
+                exit();
+            }
+        } while ($index > 0);
     }
+    fclose($fopn);
 }

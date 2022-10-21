@@ -32,6 +32,7 @@
     <h1 class="">Welcome to Zuri Authentication</h1>
     <h3>
       <?php
+      session_start();
       if (isset($_SESSION['username'])) {
         echo "Hello " . $_SESSION['username'];
       } else {

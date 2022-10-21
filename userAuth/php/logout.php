@@ -1,5 +1,7 @@
 <?php
 
+logout();
+
 function logout()
 {
     if (!isset($_SESSION['username'])) {
@@ -11,5 +13,4 @@ function logout()
     }
 }
 
-logout();
 ?>

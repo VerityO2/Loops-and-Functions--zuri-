@@ -12,7 +12,7 @@ function loginUser($username, $password)
     $fopn = fopen($dir, 'r');
     $fget = fgets($fopn);
 
-    $usercontent = file($dir);
+    $usercontent = file($fget);
 
     foreach ($usercontent as $index => $value) {
         do {

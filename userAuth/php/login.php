@@ -14,10 +14,9 @@ function loginUser($username, $password)
 
     foreach ($usercontent as $index => $value) {
 
-        if ($password = $value) {
-            if (!$username  = $value) {
+        if ($password == $value) {
+            if (!$username  == $value) {
                 header('Location: ..\forms\login.html?error');
-                exit();
             } else {
                 session_start();
                 $_SESSION['Username'] = $_POST['email'];
